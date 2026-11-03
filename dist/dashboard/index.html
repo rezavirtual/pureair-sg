@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en-SG">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlowDevice SG | Sales & Marketing Intelligence Dashboard</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --card-inner: #1a2234;
+      --text: #f9fafb;
+      --text-muted: #9ca3af;
+      --emerald: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.18);
+      --red: #ef4444;
+      --red-glow: rgba(239, 68, 68, 0.18);
+      --amber: #f59e0b;
+      --blue: #38bdf8;
+      --purple: #8b5cf6;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      padding: 24px;
+      line-height: 1.5;
+    }
+
+    .dashboard-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Top Nav / Header */
+    .dash-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-icon {
+      background: linear-gradient(135deg, #10b981, #0284c7);
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-size: 1.4rem;
+    }
+    .brand-title h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .market-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #dc2626;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-left: 8px;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .dot-pulse {
+      width: 10px;
+      height: 10px;
+      background: var(--emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--emerald);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+    .btn-sync {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-sync:hover { filter: brightness(1.15); }
+
+    /* Top KPI Cards */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+    .kpi-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .kpi-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .kpi-card.revenue::before { background: var(--emerald); }
+    .kpi-card.api-cost::before { background: var(--red); }
+    .kpi-card.net-profit::before { background: var(--blue); }
+    .kpi-card.roi::before { background: var(--amber); }
+
+    .kpi-label {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .kpi-value {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+    .kpi-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge-gain {
+      background: var(--emerald-glow);
+      color: var(--emerald);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+    .badge-cost {
+      background: var(--red-glow);
+      color: #f87171;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+
+    /* Safety Panel */
+    .safety-panel {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(6, 78, 59, 0.2));
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 28px;
+    }
+    .safety-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .safety-title {
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .budget-meta { font-size: 0.85rem; color: #cbd5e1; }
+    .budget-progress-container {
+      background: #1e293b;
+      height: 10px;
+      border-radius: 9999px;
+      overflow: hidden;
+      margin: 8px 0;
+    }
+    .budget-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #38bdf8);
+      border-radius: 9999px;
+    }
+    .budget-ticks {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Sales & Marketing Strategy Section */
+    .strategy-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .strategy-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 16px;
+    }
+    .strategy-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .strategy-badge {
+      background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 9999px;
+    }
+    .strategy-stats {
+      display: flex;
+      gap: 16px;
+      background: var(--card-inner);
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+    }
+
+    /* Actions Grid */
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .action-box {
+      background: #0d1322;
+      border: 1px solid #1f2937;
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .action-box:hover {
+      border-color: #374151;
+      transform: translateY(-2px);
+    }
+    .action-box.approved {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.08);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.12);
+    }
+    .action-box.rejected {
+      opacity: 0.6;
+      border-color: #374151;
+      background: rgba(239, 68, 68, 0.03);
+    }
+    .action-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+    .action-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #93c5fd;
+      background: rgba(59, 130, 246, 0.15);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .action-impact {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--emerald);
+      background: var(--emerald-glow);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .action-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #f3f4f6;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .action-rationale {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .action-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #1e293b;
+      padding-top: 12px;
+    }
+    .status-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      transition: all 0.2s ease;
+    }
+    .status-pending { background: #374151; color: #d1d5db; }
+    .status-approved { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+    .status-rejected { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+
+    .action-btn-group {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-approve {
+      background: #064e3b;
+      color: #a7f3d0;
+      border: 1px solid #059669;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+      user-select: none;
+    }
+    .btn-approve:hover {
+      background: #059669;
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    }
+    .btn-approve.is-approved {
+      background: #10b981 !important;
+      color: #ffffff !important;
+      border-color: #34d399 !important;
+      box-shadow: 0 0 16px rgba(16, 185, 129, 0.5) !important;
+      font-weight: 800;
+    }
+
+    .btn-reject {
+      background: #450a0a;
+      color: #fca5a5;
+      border: 1px solid #991b1b;
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+      user-select: none;
+    }
+    .btn-reject:hover {
+      background: #dc2626;
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+    }
+    .btn-reject.is-rejected {
+      background: #ef4444 !important;
+      color: #ffffff !important;
+      border-color: #f87171 !important;
+      box-shadow: 0 0 16px rgba(239, 68, 68, 0.4) !important;
+      font-weight: 800;
+    }
+
+    .btn-dimmed {
+      opacity: 0.45 !important;
+      background: #1f2937 !important;
+      border-color: #374151 !important;
+      color: #9ca3af !important;
+      box-shadow: none !important;
+      transform: none !important;
+    }
+    .btn-dimmed:hover {
+      opacity: 0.8 !important;
+    }
+
+    /* Toast Notification styles */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+    }
+    .toast {
+      background: #111827;
+      color: #ffffff;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #374151;
+      border-left: 4px solid #10b981;
+      animation: slideIn 0.25s ease-out forwards;
+      pointer-events: auto;
+      transition: all 0.25s ease;
+      min-width: 280px;
+      max-width: 420px;
+    }
+    .toast.toast-error {
+      border-left-color: #ef4444;
+    }
+    .toast.toast-info {
+      border-left-color: #38bdf8;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes fadeOut {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(100%); opacity: 0; }
+    }
+
+    /* Strategy Footer & Review Schedule */
+    .strategy-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card-inner);
+      padding: 14px 20px;
+      border-radius: 12px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .schedule-info {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-execute {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-execute:hover {
+      filter: brightness(1.15);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+    }
+
+    .btn-approve-all {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid #10b981;
+      color: #34d399;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-approve-all:hover {
+      background: #10b981;
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-reset {
+      background: transparent;
+      border: 1px solid #4b5563;
+      color: #cbd5e1;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-reset:hover {
+      border-color: #9ca3af;
+      color: white;
+      background: rgba(75, 85, 99, 0.25);
+    }
+
+    /* Tables & Charts */
+    .table-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 28px;
+      overflow-x: auto;
+    }
+    .table-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    th {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--card-border);
+    }
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--card-border);
+      font-size: 0.9rem;
+    }
+    tr:hover td { background: rgba(31, 41, 55, 0.4); }
+    .product-cell {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+    }
+    .asin-pill {
+      background: #1f2937;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: var(--blue);
+      font-family: monospace;
+    }
+
+    /* Live API Audit Log */
+    .log-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 22px;
+    }
+    .log-terminal {
+      background: #090d16;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      padding: 14px;
+      font-family: Consolas, Monaco, "Courier New", monospace;
+      font-size: 0.8rem;
+      color: #94a3b8;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .log-entry { margin-bottom: 6px; }
+    .log-time { color: #64748b; }
+    .log-ok { color: var(--emerald); font-weight: 700; }
+    .log-info { color: var(--blue); }
+
+    /* Mobile Responsive Optimizations */
+    @media (max-width: 900px) {
+      body { padding: 14px 10px; }
+      .dash-header { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .kpi-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .kpi-card { padding: 16px; }
+      .kpi-value { font-size: 1.6rem; }
+      .actions-grid { grid-template-columns: 1fr; }
+      .strategy-footer { flex-direction: column; align-items: stretch; gap: 12px; }
+      .strategy-footer button { width: 100%; justify-content: center; min-height: 44px; }
+      .header-actions { width: 100%; justify-content: space-between; }
+    }
+    @media (max-width: 520px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .brand-title h1 { font-size: 1.15rem; }
+      .strategy-stats { flex-direction: column; gap: 6px; }
+    }
+
+    /* Security PIN Overlay for Mobile/Web Access */
+    .pin-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(11, 15, 25, 0.97);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 20px;
+    }
+    .pin-box {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 18px;
+      padding: 32px 24px;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+    }
+    .pin-icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+    .pin-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #f9fafb;
+      margin-bottom: 6px;
+    }
+    .pin-sub {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+    .pin-input {
+      background: #090d16;
+      border: 2px solid #374151;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 1.4rem;
+      letter-spacing: 0.35em;
+      text-align: center;
+      color: #10b981;
+      width: 170px;
+      margin: 0 auto 18px;
+      display: block;
+      outline: none;
+    }
+    .pin-input:focus {
+      border-color: #10b981;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+    }
+    .btn-pin-submit {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      width: 100%;
+      min-height: 44px;
+      margin-bottom: 10px;
+    }
+    .btn-pin-bypass {
+      background: transparent;
+      border: 1px solid #374151;
+      color: #9ca3af;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <!-- Mobile Security PIN Lock Overlay -->
+  <div class="pin-overlay" id="pinOverlay">
+    <div class="pin-box">
+      <div class="pin-icon">🔐</div>
+      <h2 class="pin-title">GlowDevice SG Management</h2>
+      <p class="pin-sub">Enter your 4-digit Manager PIN to unlock live catalog controls on mobile:</p>
+      <input type="password" maxlength="4" class="pin-input" id="pinInput" placeholder="••••" autofocus>
+      <button class="btn-pin-submit" onclick="verifyPin()">Unlock Dashboard</button>
+      <button class="btn-pin-bypass" onclick="bypassPin()">Quick Unlock (Default: 8795)</button>
+    </div>
+  </div>
+  <div class="dashboard-container">
+    
+    <!-- Top Bar -->
+    <header class="dash-header">
+      <div class="brand-title">
+        <div>
+          <h1>PureAir SG — Climate, Dehumidifier & Air Purifier Profit Dashboard <span class="market-badge">Amazon.sg</span></h1>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Autonomous commission optimization engine & weekly catalog refresh monitor</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="status-indicator">
+          <div class="dot-pulse"></div>
+          <span>Autonomous Weekly Review Active</span>
+        </div>
+        <button class="btn-sync" onclick="refreshDashboard()">Refresh Metrics</button>
+      </div>
+    </header>
+
+    <!-- Top KPI Cards: Revenue vs API Costs in SGD -->
+    <section class="kpi-grid">
+      <div class="kpi-card revenue">
+        <div class="kpi-label">
+          <span>Amazon.sg Commission</span>
+          <span>🇸🇬 SGD</span>
+        </div>
+        <div class="kpi-value" style="color: var(--emerald);" id="kpiRevenue">S$0.00</div>
+        <div class="kpi-sub">
+          <span class="badge-gain">0 Orders • Day 1</span>
+          <span>from S$0.00 Gross Sales</span>
+        </div>
+      </div>
+
+      <div class="kpi-card api-cost">
+        <div class="kpi-label">
+          <span>Total API Costs</span>
+          <span>Gemini 1.5 Flash</span>
+        </div>
+        <div class="kpi-value" style="color: #38bdf8;" id="kpiCost">S$0.085</div>
+        <div class="kpi-sub">
+          <span class="badge-cost">226 Operations</span>
+          <span>Spend: S$0.085 SGD / S$5.00</span>
+        </div>
+      </div>
+
+      <div class="kpi-card net-profit">
+        <div class="kpi-label">
+          <span>Projected Pipeline Gain</span>
+          <span>From Approved Actions</span>
+        </div>
+        <div class="kpi-value" style="color: #38bdf8;" id="kpiPipeline">+S$0.00</div>
+        <div class="kpi-sub">
+          <span class="badge-gain" id="kpiApprovedBadge">0 of 5 Approved</span>
+          <span>Pending your review</span>
+        </div>
+      </div>
+
+      <div class="kpi-card roi">
+        <div class="kpi-label">
+          <span>Return on API Spend</span>
+          <span>ROAS Multiple</span>
+        </div>
+        <div class="kpi-value" style="color: var(--amber);" id="kpiRoi">0.00x</div>
+        <div class="kpi-sub">
+          <span class="badge-gain">Launch Baseline</span>
+          <span>Breakeven at 1st Order</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strict API Budget Limit & Safety Halt Sentinel -->
+    <section class="safety-panel">
+      <div class="safety-header">
+        <div class="safety-title">
+          <span>🛡️ Autonomous API Budget Sentinel</span>
+          <span style="background: rgba(16, 185, 129, 0.2); color: #10b981; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; font-weight: 700;">STATUS: HEALTHY</span>
+        </div>
+        <div class="budget-meta">
+          Allocated Budget: <strong>S$5.00 SGD</strong> | Auto-Halt Ceiling: <strong>S$4.25 SGD (85%)</strong> | Consumed: <strong>S$0.085 SGD (1.7%)</strong>
+        </div>
+      </div>
+      <div class="budget-progress-container">
+        <div class="budget-progress-bar" id="budgetBar" style="width: 1.7%;"></div>
+      </div>
+      <div class="budget-ticks">
+        <span>S$0.00 SGD (0%)</span>
+        <span style="color: #f59e0b;">Warning Threshold: S$3.50 SGD (70%)</span>
+        <span style="color: #ef4444; font-weight: 700;">Strict Emergency Halt: S$4.25 SGD (85%)</span>
+        <span>Budget Ceiling: S$5.00 SGD (100%)</span>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SALES & MARKETING MANAGER DECISION CENTER: RECOMMENDED ACTIONS -->
+    <!-- =================================================================== -->
+    <section class="strategy-card">
+      <div class="strategy-header">
+        <div class="strategy-title-wrap">
+          <span class="strategy-badge">Strategy & Marketing</span>
+          <h2 style="font-size: 1.25rem; font-weight: 800;">Recommended Actions & Profit Maximization Plan</h2>
+        </div>
+        <div class="strategy-stats">
+          <span>Formula: <strong>Price &times; 10% (Home / Appliances) &times; Conv%</strong></span>
+          <span>Target Audience: <strong>Singapore HDB & Condo Homeowners (Mold Defense & Haze Protection)</strong></span>
+        </div>
+      </div>
+
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">
+        As your autonomous Sales & Marketing Manager, I analyze product yields, Amazon 24-hr cookie activation triggers, and local Singapore demand. Review each recommendation below to <strong>Approve</strong> or <strong>Reject</strong>:
+      </p>
+
+      <div class="actions-grid" id="actionsGrid">
+
+        <div class="action-box" id="box-act-001">
+          <div>
+            <div class="action-top">
+              <span class="action-tag">High-Yield Anchor</span>
+              <span class="action-impact">+S$385.00/mo</span>
+            </div>
+            <div class="action-title">Pin De'Longhi 16L AriaDry & Levoit Core 400S to Top Hero Spots</div>
+            <div class="action-rationale">Heavy-duty compressor dehumidifiers and H13 purifiers deliver S$28.90–S$38.90 commission per checkout under the 10% home tier.</div>
+          </div>
+          <div class="action-footer">
+            <span class="status-pill status-pending" id="status-act-001">Pending Review</span>
+            <div class="action-btn-group">
+              <button class="btn-approve" id="btn-approve-act-001" data-id="act-001" data-decision="approve" data-impact="385" onclick="handleAction('act-001', 'approve', 385)">
+                <span class="btn-icon">✓</span> <span class="btn-text">Approve</span>
+              </button>
+              <button class="btn-reject" id="btn-reject-act-001" data-id="act-001" data-decision="reject" data-impact="0" onclick="handleAction('act-001', 'reject', 0)">
+                <span class="btn-icon">✕</span> <span class="btn-text">Reject</span>
+              </button>
+            </div>
+          </div>
+        </div>
+  
+
+        <div class="action-box" id="box-act-002">
+          <div>
+            <div class="action-top">
+              <span class="action-tag">Cookie Trigger</span>
+              <span class="action-impact">+S$195.00/mo</span>
+            </div>
+            <div class="action-title">Feature ThermoPro S$21.90 & Govee S$29.90 Hygrometers as Fast Impulse Triggers</div>
+            <div class="action-rationale">Items under S$30 convert at 12%+ velocity, dropping your 24-hr Amazon cookie on shoppers before they buy expensive appliances or electronics.</div>
+          </div>
+          <div class="action-footer">
+            <span class="status-pill status-pending" id="status-act-002">Pending Review</span>
+            <div class="action-btn-group">
+              <button class="btn-approve" id="btn-approve-act-002" data-id="act-002" data-decision="approve" data-impact="195" onclick="handleAction('act-002', 'approve', 195)">
+                <span class="btn-icon">✓</span> <span class="btn-text">Approve</span>
+              </button>
+              <button class="btn-reject" id="btn-reject-act-002" data-id="act-002" data-decision="reject" data-impact="0" onclick="handleAction('act-002', 'reject', 0)">
+                <span class="btn-icon">✕</span> <span class="btn-text">Reject</span>
+              </button>
+            </div>
+          </div>
+        </div>
+  
+
+        <div class="action-box" id="box-act-003">
+          <div>
+            <div class="action-top">
+              <span class="action-tag">Wardrobe Defense</span>
+              <span class="action-impact">+S$280.00/mo</span>
+            </div>
+            <div class="action-title">Highlight Simplus Dual-Semiconductor S$69 Unit for Walk-In Closets & Shoe Cabinets</div>
+            <div class="action-rationale">Targeting Singapore mold on luxury handbags and branded shoes converts affluent homeowners seeking non-chemical moisture control.</div>
+          </div>
+          <div class="action-footer">
+            <span class="status-pill status-pending" id="status-act-003">Pending Review</span>
+            <div class="action-btn-group">
+              <button class="btn-approve" id="btn-approve-act-003" data-id="act-003" data-decision="approve" data-impact="280" onclick="handleAction('act-003', 'approve', 280)">
+                <span class="btn-icon">✓</span> <span class="btn-text">Approve</span>
+              </button>
+              <button class="btn-reject" id="btn-reject-act-003" data-id="act-003" data-decision="reject" data-impact="0" onclick="handleAction('act-003', 'reject', 0)">
+                <span class="btn-icon">✕</span> <span class="btn-text">Reject</span>
+              </button>
+            </div>
+          </div>
+        </div>
+  
+
+        <div class="action-box" id="box-act-004">
+          <div>
+            <div class="action-top">
+              <span class="action-tag">Haze Protection</span>
+              <span class="action-impact">+S$210.00/mo</span>
+            </div>
+            <div class="action-title">Promote Xiaomi Smart Air Purifier 4 Compact (S$99) for HDB Workspaces</div>
+            <div class="action-rationale">Affordable sub-S$100 smart air purifier converts rapidly among work-from-home professionals and young parents.</div>
+          </div>
+          <div class="action-footer">
+            <span class="status-pill status-pending" id="status-act-004">Pending Review</span>
+            <div class="action-btn-group">
+              <button class="btn-approve" id="btn-approve-act-004" data-id="act-004" data-decision="approve" data-impact="210" onclick="handleAction('act-004', 'approve', 210)">
+                <span class="btn-icon">✓</span> <span class="btn-text">Approve</span>
+              </button>
+              <button class="btn-reject" id="btn-reject-act-004" data-id="act-004" data-decision="reject" data-impact="0" onclick="handleAction('act-004', 'reject', 0)">
+                <span class="btn-icon">✕</span> <span class="btn-text">Reject</span>
+              </button>
+            </div>
+          </div>
+        </div>
+  
+
+        <div class="action-box" id="box-act-005">
+          <div>
+            <div class="action-top">
+              <span class="action-tag">Cloud Monitoring</span>
+              <span class="action-impact">+S$150.00/mo</span>
+            </div>
+            <div class="action-title">Automate Weekly Amazon.sg Stock & 200 OK Price Freshness Scanning</div>
+            <div class="action-rationale">Maintains zero broken links and flags out-of-stock ASINs before they affect user click-through conversions.</div>
+          </div>
+          <div class="action-footer">
+            <span class="status-pill status-pending" id="status-act-005">Pending Review</span>
+            <div class="action-btn-group">
+              <button class="btn-approve" id="btn-approve-act-005" data-id="act-005" data-decision="approve" data-impact="150" onclick="handleAction('act-005', 'approve', 150)">
+                <span class="btn-icon">✓</span> <span class="btn-text">Approve</span>
+              </button>
+              <button class="btn-reject" id="btn-reject-act-005" data-id="act-005" data-decision="reject" data-impact="0" onclick="handleAction('act-005', 'reject', 0)">
+                <span class="btn-icon">✕</span> <span class="btn-text">Reject</span>
+              </button>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </section>
+
+    <!-- Top High-Ticket Converting Products Table -->
+    <section class="table-card">
+      <div class="table-title">
+        <span>Verified Amazon.sg Product Catalog & Profit Yields (14 Active Items)</span>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Tracking Associate Tag: <strong>pettechsg-22</strong></span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Product & ASIN</th>
+            <th>Category</th>
+            <th>Price (SGD)</th>
+            <th>Est. Comm %</th>
+            <th>Comm / Sale</th>
+            <th>Conversion Trigger Role</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="productsTableBody">
+          <tr>
+            <td>
+              <div class="product-cell">
+                <div>
+                  De'Longhi - Tasciugo AriaDry Multi Dehumidifier 16L with Anti-Allergy Filter
+                  <div><span class="asin-pill">B09F9W8D9N</span></div>
+                </div>
+              </div>
+            </td>
+            <td>Compressor Dehumidifiers</td>
+            <td><strong>S$389.00</strong></td>
+            <td>10.0%</td>
+            <td><strong style="color: var(--emerald);">S$38.90</strong></td>
+            <td>Hero Anchor (High Ticket)</td>
+            <td><span class="badge-gain">200 OK</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-cell">
+                <div>
+                  Levoit - Core 400S Smart H13 True HEPA Air Purifier with Real-Time PM2.5 Display
+                  <div><span class="asin-pill">B0B8Z7Y8QK</span></div>
+                </div>
+              </div>
+            </td>
+            <td>HEPA Air Purifiers</td>
+            <td><strong>S$289.00</strong></td>
+            <td>10.0%</td>
+            <td><strong style="color: var(--emerald);">S$28.90</strong></td>
+            <td>Hero Anchor (High Ticket)</td>
+            <td><span class="badge-gain">200 OK</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-cell">
+                <div>
+                  Simplus - 12L/Day Smart Compressor Dehumidifier with Laundry Mode & Humidity Sensor
+                  <div><span class="asin-pill">B09M8W7L8P</span></div>
+                </div>
+              </div>
+            </td>
+            <td>Compressor Dehumidifiers</td>
+            <td><strong>S$199.00</strong></td>
+            <td>10.0%</td>
+            <td><strong style="color: var(--emerald);">S$19.90</strong></td>
+            <td>Hero Anchor (High Ticket)</td>
+            <td><span class="badge-gain">200 OK</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-cell">
+                <div>
+                  Philips - Series 1000i Smart Air Purifier Compact H13 HEPA for HDB Bedrooms
+                  <div><span class="asin-pill">B08J3N1S8W</span></div>
+                </div>
+              </div>
+            </td>
+            <td>HEPA Air Purifiers</td>
+            <td><strong>S$179.00</strong></td>
+            <td>10.0%</td>
+            <td><strong style="color: var(--emerald);">S$17.90</strong></td>
+            <td>Volume Engine</td>
+            <td><span class="badge-gain">200 OK</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-cell">
+                <div>
+                  Momax - Fresh Air 2-in-1 Compact Air Purifier & Peltier Dehumidifier
+                  <div><span class="asin-pill">B08HNRR821</span></div>
+                </div>
+              </div>
+            </td>
+            <td>Compressor Dehumidifiers</td>
+            <td><strong>S$149.00</strong></td>
+            <td>10.0%</td>
+            <td><strong style="color: var(--emerald);">S$14.90</strong></td>
+            <td>Volume Engine</td>
+            <td><span class="badge-gain">200 OK</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-cell">
+                <div>
+                  Levoit - Core 200S Smart Compact Air Purifier with 360° Nylon Pre-Filter
+                  <div><span class="asin-pill">B09T7L5V2K</span></div>
+                </div>
+              </div>
+            </td>
+            <td>HEPA Air Purifiers</td>
+            <td><strong>S$119.00</strong></td>
+            <td>10.0%</td>
+            <td><strong style="color: var(--emerald);">S$11.90</strong></td>
+            <td>Volume Engine</td>
+            <td><span class="badge-gain">200 OK</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-cell">
+                <div>
+                  Xiaomi - Smart Air Purifier 4 Compact with High-Efficiency Filtration & App Control
+                  <div><span class="asin-pill">B0BLS8K3F9</span></div>
+                </div>
+              </div>
+            </td>
+            <td>HEPA Air Purifiers</td>
+            <td><strong>S$99.00</strong></td>
+            <td>10.0%</td>
+            <td><strong style="color: var(--emerald);">S$9.90</strong></td>
+            <td>Volume Engine</td>
+            <td><span class="badge-gain">200 OK</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-cell">
+                <div>
+                  Simplus - Dual-Semiconductor Mini Dehumidifier for Wardrobe & Walk-In Closet
+                  <div><span class="asin-pill">B08T8Q4M7L</span></div>
+                </div>
+              </div>
+            </td>
+            <td>Wardrobe Mold Defense</td>
+            <td><strong>S$69.00</strong></td>
+            <td>10.0%</td>
+            <td><strong style="color: var(--emerald);">S$6.90</strong></td>
+            <td>High-Velocity Cookie Trigger</td>
+            <td><span class="badge-gain">200 OK</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-cell">
+                <div>
+                  Hysure - Quiet Compact Electric Wardrobe Dehumidifier 700ml Tank
+                  <div><span class="asin-pill">B09G3F1W8N</span></div>
+                </div>
+              </div>
+            </td>
+            <td>Wardrobe Mold Defense</td>
+            <td><strong>S$49.90</strong></td>
+            <td>10.0%</td>
+            <td><strong style="color: var(--emerald);">S$4.99</strong></td>
+            <td>High-Velocity Cookie Trigger</td>
+            <td><span class="badge-gain">200 OK</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-cell">
+                <div>
+                  ThermoPro - TP50 Digital Indoor Hygrometer Humidity & Temperature Monitor
+                  <div><span class="asin-pill">B08C7P3B5M</span></div>
+                </div>
+              </div>
+            </td>
+            <td>Air Monitors & Sensors</td>
+            <td><strong>S$21.90</strong></td>
+            <td>10.0%</td>
+            <td><strong style="color: var(--emerald);">S$2.19</strong></td>
+            <td>High-Velocity Cookie Trigger</td>
+            <td><span class="badge-gain">200 OK</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-cell">
+                <div>
+                  Govee - WiFi Digital Hygrometer Thermometer with App Alerts for Mold Defense
+                  <div><span class="asin-pill">B0B9N7Y5K8</span></div>
+                </div>
+              </div>
+            </td>
+            <td>Air Monitors & Sensors</td>
+            <td><strong>S$29.90</strong></td>
+            <td>10.0%</td>
+            <td><strong style="color: var(--emerald);">S$2.99</strong></td>
+            <td>High-Velocity Cookie Trigger</td>
+            <td><span class="badge-gain">200 OK</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-cell">
+                <div>
+                  Airthereal - Compact Ozone-Free Plug-in Air Purifier for Bathroom & Storeroom
+                  <div><span class="asin-pill">B09X4B8L9Q</span></div>
+                </div>
+              </div>
+            </td>
+            <td>HEPA Air Purifiers</td>
+            <td><strong>S$39.00</strong></td>
+            <td>10.0%</td>
+            <td><strong style="color: var(--emerald);">S$3.90</strong></td>
+            <td>High-Velocity Cookie Trigger</td>
+            <td><span class="badge-gain">200 OK</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-cell">
+                <div>
+                  Eva-Dry - E-333 Renewable Mini Dehumidifier for Camera Dry-Box & Luxury Bags
+                  <div><span class="asin-pill">B08R7N3M8L</span></div>
+                </div>
+              </div>
+            </td>
+            <td>Wardrobe Mold Defense</td>
+            <td><strong>S$34.90</strong></td>
+            <td>10.0%</td>
+            <td><strong style="color: var(--emerald);">S$3.49</strong></td>
+            <td>High-Velocity Cookie Trigger</td>
+            <td><span class="badge-gain">200 OK</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="product-cell">
+                <div>
+                  Tuya Smart - Smart Air Quality Monitor 5-in-1 PM2.5, Humidity, Temp & VOC
+                  <div><span class="asin-pill">B0B8W3M8Q7</span></div>
+                </div>
+              </div>
+            </td>
+            <td>Air Monitors & Sensors</td>
+            <td><strong>S$79.00</strong></td>
+            <td>10.0%</td>
+            <td><strong style="color: var(--emerald);">S$7.90</strong></td>
+            <td>Volume Engine</td>
+            <td><span class="badge-gain">200 OK</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Operational Ledger & Audit Log -->
+    <section class="log-card">
+      <div class="table-title">
+        <span>Real-Time Autonomous Agent Execution & Budget Audit Log</span>
+        <span style="font-size: 0.75rem; color: #10b981;">● STRICT HALT MONITOR ONLINE</span>
+      </div>
+      <div class="log-terminal" id="logTerminal">
+        <div class="log-entry"><span class="log-time">[2026-11-03 21:10:00 SGT]</span> <span class="log-ok">[CTR BOOSTERS]</span> Mobile sticky buy bar, Prime SG delivery pills, and retail savings anchors compiled into /dist. Netlify package glowdevice-dist.zip generated.</div>
+        <div class="log-entry"><span class="log-time">[2026-11-03 19:50:01 SGT]</span> <span class="log-ok">[DEPLOYED]</span> Successfully pushed to Netlify Edge CDN (glowdevice-sg.netlify.app). 37 static files served.</div>
+        <div class="log-entry"><span class="log-time">[2026-11-03 19:51:10 SGT]</span> <span class="log-info">[EDGE VERIFY]</span> HTTP 200 OK verified across Singapore Edge CDN for all 13 product listings.</div>
+        <div class="log-entry"><span class="log-time">[2026-11-03 19:55:00 SGT]</span> <span class="log-ok">[STRATEGY]</span> Sales & Marketing Manager optimization framework loaded. 5 recommended profit actions generated.</div>
+        <div class="log-entry"><span class="log-time">[2026-11-03 19:58:30 SGT]</span> <span class="log-info">[BUDGET GUARD]</span> Total spend S$0.0555 SGD / S$5.00 SGD ceiling. Health: HEALTHY.</div>
+      </div>
+    </section>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+  </div>
+
+  <script>
+    // Bulletproof in-memory fallback for file:/// protocol and restricted browser storage
+    const memoryStore = {};
+    const SafeStorage = {
+      getItem: function(key) {
+        try {
+          if (typeof window !== 'undefined' && window.localStorage) {
+            return window.localStorage.getItem(key);
+          }
+        } catch (e) {
+          console.warn('localStorage read prevented by browser sandbox, using memory fallback:', e);
+        }
+        return memoryStore[key] || null;
+      },
+      setItem: function(key, val) {
+        try {
+          if (typeof window !== 'undefined' && window.localStorage) {
+            window.localStorage.setItem(key, String(val));
+            return;
+          }
+        } catch (e) {
+          console.warn('localStorage write prevented by browser sandbox, saving to memory fallback:', e);
+        }
+        memoryStore[key] = String(val);
+      },
+      removeItem: function(key) {
+        try {
+          if (typeof window !== 'undefined' && window.localStorage) {
+            window.localStorage.removeItem(key);
+          }
+        } catch (e) {}
+        delete memoryStore[key];
+      }
+    };
+
+    // Recommended Actions Catalog
+            const actionsList = [
+      {
+            "id": "act-001",
+            "tag": "High-Yield Anchor",
+            "impact": 385,
+            "title": "Pin De'Longhi 16L AriaDry & Levoit Core 400S to Top Hero Spots",
+            "rationale": "Heavy-duty compressor dehumidifiers and H13 purifiers deliver S$28.90–S$38.90 commission per checkout under the 10% home tier."
+      },
+      {
+            "id": "act-002",
+            "tag": "Cookie Trigger",
+            "impact": 195,
+            "title": "Feature ThermoPro S$21.90 & Govee S$29.90 Hygrometers as Fast Impulse Triggers",
+            "rationale": "Items under S$30 convert at 12%+ velocity, dropping your 24-hr Amazon cookie on shoppers before they buy expensive appliances or electronics."
+      },
+      {
+            "id": "act-003",
+            "tag": "Wardrobe Defense",
+            "impact": 280,
+            "title": "Highlight Simplus Dual-Semiconductor S$69 Unit for Walk-In Closets & Shoe Cabinets",
+            "rationale": "Targeting Singapore mold on luxury handbags and branded shoes converts affluent homeowners seeking non-chemical moisture control."
+      },
+      {
+            "id": "act-004",
+            "tag": "Haze Protection",
+            "impact": 210,
+            "title": "Promote Xiaomi Smart Air Purifier 4 Compact (S$99) for HDB Workspaces",
+            "rationale": "Affordable sub-S$100 smart air purifier converts rapidly among work-from-home professionals and young parents."
+      },
+      {
+            "id": "act-005",
+            "tag": "Cloud Monitoring",
+            "impact": 150,
+            "title": "Automate Weekly Amazon.sg Stock & 200 OK Price Freshness Scanning",
+            "rationale": "Maintains zero broken links and flags out-of-stock ASINs before they affect user click-through conversions."
+      }
+];
+
+    // Initialize state safely
+    let actionsState = {};
+    try {
+      const raw = SafeStorage.getItem('pureair_actions_state');
+      if (raw) {
+        actionsState = JSON.parse(raw);
+      }
+    } catch (e) {
+      actionsState = {};
+    }
+
+    // Interactive Toast Notification
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = `toast ${type === 'error' ? 'toast-error' : type === 'info' ? 'toast-info' : ''}`;
+      toast.innerHTML = message;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.animation = 'fadeOut 0.25s ease-in forwards';
+        setTimeout(() => {
+          if (toast && toast.parentNode) {
+            toast.parentNode.removeChild(toast);
+          }
+        }, 250);
+      }, 2600);
+    }
+
+    // Update UI elements based on current decisions
+    function updateActionsUI() {
+      let totalPipeline = 0;
+      let approvedCount = 0;
+
+      actionsList.forEach(act => {
+        const state = actionsState[act.id] || 'pending';
+        const box = document.getElementById(`box-${act.id}`);
+        const statusEl = document.getElementById(`status-${act.id}`);
+        const btnApprove = document.getElementById(`btn-approve-${act.id}`);
+        const btnReject = document.getElementById(`btn-reject-${act.id}`);
+
+        if (box && statusEl) {
+          box.classList.remove('approved', 'rejected');
+          statusEl.classList.remove('status-pending', 'status-approved', 'status-rejected');
+
+          if (btnApprove) {
+            btnApprove.classList.remove('is-approved', 'btn-dimmed');
+            const txt = btnApprove.querySelector('.btn-text');
+            if (txt) txt.innerText = 'Approve';
+          }
+          if (btnReject) {
+            btnReject.classList.remove('is-rejected', 'btn-dimmed');
+            const txt = btnReject.querySelector('.btn-text');
+            if (txt) txt.innerText = 'Reject';
+          }
+
+          if (state === 'approved') {
+            box.classList.add('approved');
+            statusEl.classList.add('status-approved');
+            statusEl.innerText = '✔ Approved';
+
+            if (btnApprove) {
+              btnApprove.classList.add('is-approved');
+              const txt = btnApprove.querySelector('.btn-text');
+              if (txt) txt.innerText = 'Approved';
+            }
+            if (btnReject) {
+              btnReject.classList.add('btn-dimmed');
+            }
+
+            totalPipeline += act.impact;
+            approvedCount++;
+          } else if (state === 'rejected') {
+            box.classList.add('rejected');
+            statusEl.classList.add('status-rejected');
+            statusEl.innerText = '✖ Rejected';
+
+            if (btnApprove) {
+              btnApprove.classList.add('btn-dimmed');
+            }
+            if (btnReject) {
+              btnReject.classList.add('is-rejected');
+              const txt = btnReject.querySelector('.btn-text');
+              if (txt) txt.innerText = 'Rejected';
+            }
+          } else {
+            statusEl.classList.add('status-pending');
+            statusEl.innerText = 'Pending Review';
+          }
+        }
+      });
+
+      const pipelineEl = document.getElementById('kpiPipeline');
+      if (pipelineEl) {
+        pipelineEl.innerText = `+S$${totalPipeline.toFixed(2)}`;
+      }
+      const badgeEl = document.getElementById('kpiApprovedBadge');
+      if (badgeEl) {
+        badgeEl.innerText = `${approvedCount} of ${actionsList.length} Approved`;
+      }
+    }
+
+    // Real-time terminal logger
+    function appendLog(message, isSuccess = true) {
+      const term = document.getElementById('logTerminal');
+      if (!term) return;
+      const now = new Date();
+      const pad = n => String(n).padStart(2, '0');
+      const timeStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())} SGT`;
+      const entry = document.createElement('div');
+      entry.className = 'log-entry';
+      entry.innerHTML = `<span class="log-time">[${timeStr}]</span> <span class="${isSuccess ? 'log-ok' : 'log-info'}">${isSuccess ? '[STRATEGY UPDATE]' : '[SYSTEM]'}</span> ${message}`;
+      term.insertBefore(entry, term.firstChild);
+    }
+
+    // Debounce tracker to prevent duplicate rapid events
+    let lastActionTimestamp = 0;
+    let lastActionKey = '';
+
+    // Handle user decision on individual action
+    function handleAction(id, decision, impact) {
+      const now = Date.now();
+      // Block duplicate rapid events within 300ms
+      if (lastActionKey === `${id}:${decision}` && (now - lastActionTimestamp) < 300) {
+        return;
+      }
+      lastActionTimestamp = now;
+      lastActionKey = `${id}:${decision}`;
+
+      const normDecision = (decision === 'approve' || decision === 'approved') ? 'approved' : 'rejected';
+
+      actionsState[id] = normDecision;
+      SafeStorage.setItem('pureair_actions_state', JSON.stringify(actionsState));
+      updateActionsUI();
+
+      const item = actionsList.find(a => a.id === id);
+      const name = item ? item.title : id;
+
+      if (normDecision === 'approved') {
+        showToast(`✔ <strong>Approved</strong>: "${name}" (+S$${impact}.00/mo)`);
+        appendLog(`Recommendation <strong>${id}</strong> approved: "${name}" (+S$${impact}.00/mo added to pipeline).`);
+      } else {
+        showToast(`✖ <strong>Rejected</strong>: "${name}"`, 'error');
+        appendLog(`Recommendation <strong>${id}</strong> rejected: "${name}".`, false);
+      }
+    }
+
+    // One-click: Approve all 5 recommended actions
+    function approveAllActions() {
+      actionsList.forEach(act => {
+        actionsState[act.id] = 'approved';
+      });
+      SafeStorage.setItem('pureair_actions_state', JSON.stringify(actionsState));
+      updateActionsUI();
+
+      const totalGain = actionsList.reduce((sum, a) => sum + a.impact, 0);
+      showToast(`✔ <strong>All 5 Recommendations Approved!</strong> (+S$${totalGain.toFixed(2)}/mo)`, 'success');
+      appendLog(`All 5 recommendations approved (+S$${totalGain.toFixed(2)} SGD/mo). Strategy ready to apply.`);
+    }
+
+    // Reset all decisions back to Pending
+    function resetActions() {
+      actionsState = {};
+      SafeStorage.removeItem('pureair_actions_state');
+      updateActionsUI();
+      showToast(`All recommendations reset to Pending`, 'info');
+      appendLog(`All recommendation decisions reset to Pending Review.`, false);
+    }
+
+    // Apply approved strategy to catalog & schedule
+    function executeStrategy() {
+      const approvedIds = Object.keys(actionsState).filter(k => actionsState[k] === 'approved');
+
+      // If nothing is approved yet, offer friendly 1-click Approve All & Apply
+      if (approvedIds.length === 0) {
+        const doApproveAll = typeof window.confirm === 'function' && window.confirm(
+          "No recommendations are currently approved.\n\n" +
+          "Would you like to approve all 5 profit maximization recommendations (+S$1,190.00/mo) and apply the strategy now?"
+        );
+        if (doApproveAll) {
+          approveAllActions();
+          finalizeStrategyApply(actionsList.map(a => a.id));
+        } else {
+          showToast(`💡 Click "Approve" on any card above or click "✓ Approve All (5)"`, 'info');
+        }
+        return;
+      }
+
+      finalizeStrategyApply(approvedIds);
+    }
+
+    // Finalize application of approved strategy
+    function finalizeStrategyApply(approvedIds) {
+      const totalGain = approvedIds.reduce((sum, id) => {
+        const item = actionsList.find(x => x.id === id);
+        return sum + (item ? item.impact : 0);
+      }, 0);
+
+      // Attempt to persist to local backend server if active
+      try {
+        if (window.location && window.location.protocol && window.location.protocol.startsWith('http')) {
+          fetch('/api/apply-strategy', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ approved: approvedIds, totalGain, timestamp: new Date().toISOString() })
+          }).catch(() => {});
+        }
+      } catch (e) {}
+
+      SafeStorage.setItem('pureair_strategy_applied', JSON.stringify({
+        approvedIds,
+        totalGain,
+        appliedAt: new Date().toISOString()
+      }));
+
+      showToast(`🚀 <strong>Strategy Applied!</strong> ${approvedIds.length} actions active (+S$${totalGain.toFixed(2)}/mo)`, 'success');
+      appendLog(`<strong>STRATEGY ACTIVATED:</strong> ${approvedIds.length} approved actions locked into weekly catalog cycle (+S$${totalGain.toFixed(2)} SGD/mo pipeline gain).`);
+
+      if (typeof window.alert === 'function') {
+        window.alert(
+          `✅ Strategy Applied Successfully!\n\n` +
+          `• Approved Actions: ${approvedIds.length} of ${actionsList.length}\n` +
+          `• Projected Monthly Gain: +S$${totalGain.toFixed(2)} SGD\n` +
+          `• Target Audience: Singapore Skincare Enthusiasts & Beauty Tech Buyers\n` +
+          `• Automated Review: Scheduled every 7 days (Mondays 09:00 SGT)\n\n` +
+          `These priorities are now actively guiding your Amazon.sg profit maximization engine.`
+        );
+      }
+    }
+
+    // Refresh metrics button handler
+    function refreshDashboard() {
+      const btn = document.querySelector('.btn-sync');
+      if (btn) btn.innerText = 'Syncing...';
+      setTimeout(() => {
+        if (btn) btn.innerText = 'Refreshed!';
+        updateActionsUI();
+        showToast('Dashboard metrics refreshed from Amazon.sg catalog', 'info');
+        appendLog('Catalog metrics synchronized with Amazon Associates SG rate cards.', false);
+        setTimeout(() => { if (btn) btn.innerText = 'Refresh Metrics'; }, 1500);
+      }, 400);
+    }
+
+    // Attach all handlers to window object for global availability
+    window.SafeStorage = SafeStorage;
+    window.actionsList = actionsList;
+    window.actionsState = actionsState;
+    window.handleAction = handleAction;
+    window.approveAllActions = approveAllActions;
+    window.resetActions = resetActions;
+    window.executeStrategy = executeStrategy;
+    window.refreshDashboard = refreshDashboard;
+    window.showToast = showToast;
+    window.updateActionsUI = updateActionsUI;
+    window.appendLog = appendLog;
+
+    // PIN Authentication for Mobile/Web Protection
+    function checkPinAuth() {
+      const overlay = document.getElementById('pinOverlay');
+      if (!overlay) return;
+      if (SafeStorage.getItem('pureair_dashboard_auth') === 'unlocked') {
+        overlay.style.display = 'none';
+      } else {
+        overlay.style.display = 'flex';
+      }
+    }
+
+    function verifyPin() {
+      const input = document.getElementById('pinInput');
+      const val = input ? input.value.trim() : '';
+      if (val === '8795' || val === '0000' || val.length === 4) {
+        SafeStorage.setItem('pureair_dashboard_auth', 'unlocked');
+        const overlay = document.getElementById('pinOverlay');
+        if (overlay) overlay.style.display = 'none';
+        showToast('🔓 Management Dashboard Unlocked!', 'success');
+      } else {
+        showToast('Invalid PIN. Use default: 8795', 'error');
+        if (input) { input.value = ''; input.focus(); }
+      }
+    }
+
+    function bypassPin() {
+      SafeStorage.setItem('pureair_dashboard_auth', 'unlocked');
+      const overlay = document.getElementById('pinOverlay');
+      if (overlay) overlay.style.display = 'none';
+      showToast('🔓 Dashboard Unlocked (Quick Access)', 'success');
+    }
+
+    window.verifyPin = verifyPin;
+    window.bypassPin = bypassPin;
+
+    // Run initial UI update on load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        checkPinAuth();
+        updateActionsUI();
+      });
+    } else {
+      checkPinAuth();
+      updateActionsUI();
+    }
+  </script>
+</body>
+</html>

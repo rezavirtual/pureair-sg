@@ -1,0 +1,854 @@
+{
+  "maxBudgetSgd": 5,
+  "haltThresholdPercent": 85,
+  "hardHaltLimitSgd": 4.25,
+  "totalCostSgd": 0.0315,
+  "totalCostUsd": 0.02352,
+  "totalCalls": 84,
+  "totalPromptTokens": 52080,
+  "totalCompletionTokens": 65520,
+  "status": "HEALTHY",
+  "lastUpdated": "2026-11-03T23:45:12.030Z",
+  "history": [
+    {
+      "timestamp": "2026-11-03T23:45:12.029Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0B8W3M8Q7",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.0315
+    },
+    {
+      "timestamp": "2026-11-03T23:45:12.021Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B08R7N3M8L",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.031125
+    },
+    {
+      "timestamp": "2026-11-03T23:45:12.006Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B09X4B8L9Q",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.03075
+    },
+    {
+      "timestamp": "2026-11-03T23:45:11.993Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0B9N7Y5K8",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.030375
+    },
+    {
+      "timestamp": "2026-11-03T23:45:11.980Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B08C7P3B5M",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.03
+    },
+    {
+      "timestamp": "2026-11-03T23:45:11.968Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B09G3F1W8N",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.029625
+    },
+    {
+      "timestamp": "2026-11-03T23:45:11.956Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B08T8Q4M7L",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.02925
+    },
+    {
+      "timestamp": "2026-11-03T23:45:11.948Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0BLS8K3F9",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.028875
+    },
+    {
+      "timestamp": "2026-11-03T23:45:11.936Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B09T7L5V2K",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.0285
+    },
+    {
+      "timestamp": "2026-11-03T23:45:11.921Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B08HNRR821",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.028125
+    },
+    {
+      "timestamp": "2026-11-03T23:45:11.915Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B08J3N1S8W",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.02775
+    },
+    {
+      "timestamp": "2026-11-03T23:45:11.903Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B09M8W7L8P",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.027375
+    },
+    {
+      "timestamp": "2026-11-03T23:45:11.891Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0B8Z7Y8QK",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.027
+    },
+    {
+      "timestamp": "2026-11-03T23:45:11.881Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B09F9W8D9N",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.026625
+    },
+    {
+      "timestamp": "2026-11-03T23:44:10.247Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0B8W3M8Q7",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.02625
+    },
+    {
+      "timestamp": "2026-11-03T23:44:10.233Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B08R7N3M8L",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.025875
+    },
+    {
+      "timestamp": "2026-11-03T23:44:10.219Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B09X4B8L9Q",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.0255
+    },
+    {
+      "timestamp": "2026-11-03T23:44:10.212Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0B9N7Y5K8",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.025125
+    },
+    {
+      "timestamp": "2026-11-03T23:44:10.206Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B08C7P3B5M",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.02475
+    },
+    {
+      "timestamp": "2026-11-03T23:44:10.194Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B09G3F1W8N",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.024375
+    },
+    {
+      "timestamp": "2026-11-03T23:44:10.183Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B08T8Q4M7L",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.024
+    },
+    {
+      "timestamp": "2026-11-03T23:44:10.173Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0BLS8K3F9",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.023625
+    },
+    {
+      "timestamp": "2026-11-03T23:44:10.161Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B09T7L5V2K",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.02325
+    },
+    {
+      "timestamp": "2026-11-03T23:44:10.155Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B08HNRR821",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.022875
+    },
+    {
+      "timestamp": "2026-11-03T23:44:10.141Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B08J3N1S8W",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.0225
+    },
+    {
+      "timestamp": "2026-11-03T23:44:10.134Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B09M8W7L8P",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.022125
+    },
+    {
+      "timestamp": "2026-11-03T23:44:10.125Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0B8Z7Y8QK",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.02175
+    },
+    {
+      "timestamp": "2026-11-03T23:44:10.111Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B09F9W8D9N",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.021375
+    },
+    {
+      "timestamp": "2026-11-03T23:00:49.838Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B08JSMR854",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.021
+    },
+    {
+      "timestamp": "2026-11-03T23:00:49.828Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0CBFLQF9J",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.020625
+    },
+    {
+      "timestamp": "2026-11-03T23:00:49.819Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0CNZFNH2G",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.02025
+    },
+    {
+      "timestamp": "2026-11-03T23:00:49.812Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B07FSBH6XY",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.019875
+    },
+    {
+      "timestamp": "2026-11-03T23:00:49.803Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GG8QWYLT",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.0195
+    },
+    {
+      "timestamp": "2026-11-03T23:00:49.795Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0C34WWGXP",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.019125
+    },
+    {
+      "timestamp": "2026-11-03T23:00:49.776Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0C8KHTD16",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.01875
+    },
+    {
+      "timestamp": "2026-11-03T23:00:49.770Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GXYZGQ93",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.018375
+    },
+    {
+      "timestamp": "2026-11-03T23:00:49.762Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0CSSRJCCZ",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.018
+    },
+    {
+      "timestamp": "2026-11-03T23:00:49.754Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GYR746MG",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.017625
+    },
+    {
+      "timestamp": "2026-11-03T23:00:49.742Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0DQSK8Y52",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.01725
+    },
+    {
+      "timestamp": "2026-11-03T23:00:49.735Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0BQ5W17CC",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.016875
+    },
+    {
+      "timestamp": "2026-11-03T23:00:49.726Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0BBB76WYQ",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.0165
+    },
+    {
+      "timestamp": "2026-11-03T23:00:49.718Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GVSBV7V9",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.016125
+    },
+    {
+      "timestamp": "2026-11-03T22:59:38.867Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B08JSMR854",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.01575
+    },
+    {
+      "timestamp": "2026-11-03T22:59:38.854Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0CBFLQF9J",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.015375
+    },
+    {
+      "timestamp": "2026-11-03T22:59:38.846Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0CNZFNH2G",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.015
+    },
+    {
+      "timestamp": "2026-11-03T22:59:38.837Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B07FSBH6XY",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.014625
+    },
+    {
+      "timestamp": "2026-11-03T22:59:38.830Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GG8QWYLT",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.01425
+    },
+    {
+      "timestamp": "2026-11-03T22:59:38.820Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0C34WWGXP",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.013875
+    },
+    {
+      "timestamp": "2026-11-03T22:59:38.808Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0C8KHTD16",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.0135
+    },
+    {
+      "timestamp": "2026-11-03T22:59:38.799Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GXYZGQ93",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.013125
+    },
+    {
+      "timestamp": "2026-11-03T22:59:38.787Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0CSSRJCCZ",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.01275
+    },
+    {
+      "timestamp": "2026-11-03T22:59:38.778Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GYR746MG",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.012375
+    },
+    {
+      "timestamp": "2026-11-03T22:59:38.767Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0DQSK8Y52",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.012
+    },
+    {
+      "timestamp": "2026-11-03T22:59:38.759Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0BQ5W17CC",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.011625
+    },
+    {
+      "timestamp": "2026-11-03T22:59:38.751Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0BBB76WYQ",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.01125
+    },
+    {
+      "timestamp": "2026-11-03T22:59:38.741Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GVSBV7V9",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.010875
+    },
+    {
+      "timestamp": "2026-11-03T22:59:15.757Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B08JSMR854",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.0105
+    },
+    {
+      "timestamp": "2026-11-03T22:59:15.752Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0CBFLQF9J",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.010125
+    },
+    {
+      "timestamp": "2026-11-03T22:59:15.743Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0CNZFNH2G",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.00975
+    },
+    {
+      "timestamp": "2026-11-03T22:59:15.735Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B07FSBH6XY",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.009375
+    },
+    {
+      "timestamp": "2026-11-03T22:59:15.727Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GG8QWYLT",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.009
+    },
+    {
+      "timestamp": "2026-11-03T22:59:15.712Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0C34WWGXP",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.008625
+    },
+    {
+      "timestamp": "2026-11-03T22:59:15.699Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0C8KHTD16",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.00825
+    },
+    {
+      "timestamp": "2026-11-03T22:59:15.690Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GXYZGQ93",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.007875
+    },
+    {
+      "timestamp": "2026-11-03T22:59:15.678Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0CSSRJCCZ",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.0075
+    },
+    {
+      "timestamp": "2026-11-03T22:59:15.665Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GYR746MG",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.007125
+    },
+    {
+      "timestamp": "2026-11-03T22:59:15.656Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0DQSK8Y52",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.00675
+    },
+    {
+      "timestamp": "2026-11-03T22:59:15.645Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0BQ5W17CC",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.006375
+    },
+    {
+      "timestamp": "2026-11-03T22:59:15.638Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0BBB76WYQ",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.006
+    },
+    {
+      "timestamp": "2026-11-03T22:59:15.629Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GVSBV7V9",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.005625
+    },
+    {
+      "timestamp": "2026-11-03T22:58:51.980Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B08JSMR854",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.00525
+    },
+    {
+      "timestamp": "2026-11-03T22:58:51.974Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0CBFLQF9J",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.004875
+    },
+    {
+      "timestamp": "2026-11-03T22:58:51.964Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0CNZFNH2G",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.0045
+    },
+    {
+      "timestamp": "2026-11-03T22:58:51.954Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B07FSBH6XY",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.004125
+    },
+    {
+      "timestamp": "2026-11-03T22:58:51.946Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GG8QWYLT",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.00375
+    },
+    {
+      "timestamp": "2026-11-03T22:58:51.934Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0C34WWGXP",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.003375
+    },
+    {
+      "timestamp": "2026-11-03T22:58:51.919Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0C8KHTD16",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.003
+    },
+    {
+      "timestamp": "2026-11-03T22:58:51.909Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GXYZGQ93",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.002625
+    },
+    {
+      "timestamp": "2026-11-03T22:58:51.897Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0CSSRJCCZ",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.00225
+    },
+    {
+      "timestamp": "2026-11-03T22:58:51.890Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GYR746MG",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.001875
+    },
+    {
+      "timestamp": "2026-11-03T22:58:51.884Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0DQSK8Y52",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.0015
+    },
+    {
+      "timestamp": "2026-11-03T22:58:51.874Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0BQ5W17CC",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.001125
+    },
+    {
+      "timestamp": "2026-11-03T22:58:51.865Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0BBB76WYQ",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.00075
+    },
+    {
+      "timestamp": "2026-11-03T22:58:51.859Z",
+      "provider": "gemini-1.5-flash",
+      "action": "rewrite_product_B0GVSBV7V9",
+      "promptTokens": 620,
+      "completionTokens": 780,
+      "costUsd": 0.00028,
+      "costSgd": 0.000375,
+      "accumulatedSgd": 0.000375
+    }
+  ]
+}

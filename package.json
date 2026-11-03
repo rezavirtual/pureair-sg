@@ -1,0 +1,24 @@
+{
+  "name": "pettech-sg-affiliate-aggregator",
+  "version": "1.0.0",
+  "description": "Autonomous Amazon.sg Pet Tech Gadgets Affiliate Content Aggregator & Monitoring Dashboard",
+  "main": "scripts/run-aggregator.js",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/run-aggregator.js",
+    "build": "node scripts/run-aggregator.js",
+    "dashboard": "node scripts/serve-dashboard.js",
+    "test-budget-halt": "node scripts/test-budget-halt.js"
+  },
+  "keywords": [
+    "amazon-associates",
+    "amazon-sg",
+    "pet-tech",
+    "singapore",
+    "gemini-api",
+    "affiliate-marketing",
+    "netlify"
+  ],
+  "author": "Antigravity Autonomous Agent",
+  "license": "MIT"
+}

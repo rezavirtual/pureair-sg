@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Environment Secrets
+.env
+.env.local
+
+# Local Netlify & Build temp
+.netlify/
+*.zip
+*.log
+
+# Browser cache & profiles
+.edge-profile/
+*.png

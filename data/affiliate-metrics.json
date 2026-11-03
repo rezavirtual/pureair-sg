@@ -1,0 +1,12 @@
+{
+  "store": "GlowDevice SG",
+  "currency": "SGD",
+  "commissionRateAverage": 0.108,
+  "catalogSize": 14,
+  "summary": {
+    "totalClicks": 0,
+    "totalOrders": 0,
+    "totalCommissionSgd": 0,
+    "conversionRate": 0
+  }
+}

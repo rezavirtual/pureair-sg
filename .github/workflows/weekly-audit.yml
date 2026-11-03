@@ -1,0 +1,42 @@
+name: GlowDevice SG Autonomous Sales Audit & Mobile Reporter
+
+on:
+  schedule:
+    # Weekly Executive Digest: Every Monday at 01:00 UTC (09:00 SGT)
+    - cron: '0 1 * * 1'
+    # Daily Performance & Clicks Audit: Daily at 15:30 UTC (23:30 SGT)
+    - cron: '30 15 * * *'
+  workflow_dispatch: # Allows 1-tap manual trigger from GitHub mobile or browser
+
+jobs:
+  audit-and-dispatch:
+    name: Run Sales Audit & Mobile Dispatch
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 📥 Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 📊 Run Sales Audit & Dual Mobile Dispatch
+        env:
+          REPORT_EMAIL: ${{ secrets.REPORT_EMAIL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          node scripts/weekly-review.js
+
+      - name: 🚀 Auto-Deploy Updated Site to Netlify
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          node scripts/deploy-to-netlify.js
