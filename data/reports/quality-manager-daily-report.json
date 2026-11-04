@@ -1,0 +1,124 @@
+{
+  "auditDate": "2026-11-04T01:08:36.987Z",
+  "storeName": "PureAir-SG",
+  "catalogSize": 14,
+  "passedCount": 14,
+  "brokenLinks": 0,
+  "missingImages": 0,
+  "badTags": 0,
+  "passRate": "100.0%",
+  "items": [
+    {
+      "asin": "B08L73QL1V",
+      "title": "LEVOIT Core 300S Smart H13 True HEPA Air Purifier with Real-Time Air Quality Sensor",
+      "priceSgd": 227.86,
+      "linkOk": true,
+      "tagOk": true,
+      "imgExists": true
+    },
+    {
+      "asin": "B0GL7NYHP3",
+      "title": "AromaRoom Smart Air Purifier for Large Living Spaces with Real-Time PM2.5 Monitor",
+      "priceSgd": 116.17,
+      "linkOk": true,
+      "tagOk": true,
+      "imgExists": true
+    },
+    {
+      "asin": "B001GKLYDK",
+      "title": "Blueair Classic Particle & SmokeStop Active Carbon Air Purifier",
+      "priceSgd": 125.54,
+      "linkOk": true,
+      "tagOk": true,
+      "imgExists": true
+    },
+    {
+      "asin": "B0DYDZRD1F",
+      "title": "Cobectal Compact 3-in-1 True HEPA Bedroom Air Purifier",
+      "priceSgd": 69.76,
+      "linkOk": true,
+      "tagOk": true,
+      "imgExists": true
+    },
+    {
+      "asin": "B0GJ75792F",
+      "title": "Smart Auto PM2.5 Medical-Grade HEPA Air Purifier for Allergies & Pets",
+      "priceSgd": 135.94,
+      "linkOk": true,
+      "tagOk": true,
+      "imgExists": true
+    },
+    {
+      "asin": "B0GSX4BP21",
+      "title": "Devola Smart Compressor Dehumidifier 12L/Day with Activated Carbon Filter",
+      "priceSgd": 235.7,
+      "linkOk": true,
+      "tagOk": true,
+      "imgExists": true
+    },
+    {
+      "asin": "B0HCTFM5TG",
+      "title": "High-Efficiency Home Dehumidifier 1000 Sq Ft with 95oz Water Tank & Drain Hose",
+      "priceSgd": 114.08,
+      "linkOk": true,
+      "tagOk": true,
+      "imgExists": true
+    },
+    {
+      "asin": "B09W9TPJGZ",
+      "title": "All-in-1 Dehumidifier and Air Purifier Combo with Negative Ion Generator",
+      "priceSgd": 164.96,
+      "linkOk": true,
+      "tagOk": true,
+      "imgExists": true
+    },
+    {
+      "asin": "B0FSJFFW67",
+      "title": "Whisper-Quiet Small Dehumidifier with Auto Defrost for Bedrooms & Offices",
+      "priceSgd": 68.94,
+      "linkOk": true,
+      "tagOk": true,
+      "imgExists": true
+    },
+    {
+      "asin": "B0FVFCB9F6",
+      "title": "Compact Ultra-Quiet Mini Dehumidifier 35oz for Wardrobes & Luxury Bags",
+      "priceSgd": 66.65,
+      "linkOk": true,
+      "tagOk": true,
+      "imgExists": true
+    },
+    {
+      "asin": "B0BS1QGN4Y",
+      "title": "Rubson AERO 360° Non-Electric Aerodynamic Moisture Absorber Device",
+      "priceSgd": 25.96,
+      "linkOk": true,
+      "tagOk": true,
+      "imgExists": true
+    },
+    {
+      "asin": "B076FG8YQJ",
+      "title": "Cordless Renewable Mini Dehumidifier for Camera Dry-Boxes & Closets",
+      "priceSgd": 16.86,
+      "linkOk": true,
+      "tagOk": true,
+      "imgExists": true
+    },
+    {
+      "asin": "B0H794KJX7",
+      "title": "Portable Laser Air Quality Monitor PM2.5, PM10 & Temperature Sensor",
+      "priceSgd": 61.31,
+      "linkOk": true,
+      "tagOk": true,
+      "imgExists": true
+    },
+    {
+      "asin": "B08DNJ8L55",
+      "title": "Temtop LKC-1000S+ 2nd Gen Professional Formaldehyde & PM2.5 Air Monitor",
+      "priceSgd": 225.08,
+      "linkOk": true,
+      "tagOk": true,
+      "imgExists": true
+    }
+  ]
+}

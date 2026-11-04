@@ -388,8 +388,8 @@ header.ergo-header {
 
 .card-media-wrapper {
   position: relative;
-  height: 250px;
-  background: #fbfbfd;
+  height: 270px;
+  background: #ffffff;
   overflow: hidden;
   border-bottom: 1px solid var(--ergo-border-light);
   display: flex;
@@ -397,16 +397,30 @@ header.ergo-header {
   justify-content: center;
 }
 
-.card-img {
+.card-media-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
+  padding: 42px 18px 16px 18px;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.card-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  padding: 16px;
-  transition: transform 0.3s ease;
+  margin: auto;
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .ergo-card:hover .card-img {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 .card-brand-badge {
@@ -621,18 +635,27 @@ footer.ergo-footer {
 }
 
 .detail-gallery {
-  background: #fbfbfd;
+  background: #ffffff;
   border: 1px solid var(--ergo-border);
   border-radius: 20px;
-  padding: 30px;
+  padding: 30px 20px;
   text-align: center;
   margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 340px;
+  box-sizing: border-box;
 }
 
 .detail-img {
   max-width: 100%;
   max-height: 420px;
+  width: auto;
+  height: auto;
   object-fit: contain;
+  margin: 0 auto;
+  display: block;
 }
 
 .sticky-buy-box {
@@ -691,6 +714,22 @@ footer.ergo-footer {
   .product-detail-layout { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.2rem; }
   .product-grid { grid-template-columns: 1fr; }
+  .card-media-wrapper {
+    height: 240px;
+  }
+  .card-media-link {
+    padding: 38px 14px 12px 14px;
+  }
+  .card-img {
+    max-height: 185px;
+  }
+  .detail-gallery {
+    padding: 20px 14px;
+    min-height: 260px;
+  }
+  .detail-img {
+    max-height: 280px;
+  }
   .mobile-sticky-cta {
     display: flex;
     position: fixed;
@@ -704,6 +743,25 @@ footer.ergo-footer {
     align-items: center;
     justify-content: space-between;
     z-index: 999;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-media-wrapper {
+    height: 220px;
+  }
+  .card-media-link {
+    padding: 36px 10px 10px 10px;
+  }
+  .card-img {
+    max-height: 170px;
+  }
+  .detail-gallery {
+    min-height: 230px;
+    padding: 16px 10px;
+  }
+  .detail-img {
+    max-height: 230px;
   }
 }
 `;
@@ -721,7 +779,7 @@ footer.ergo-footer {
         <span class="card-tier-pill ${p.isHighTicket ? 'tier-anchor' : 'tier-trigger'}">
           ${p.isHighTicket ? 'Premium Pick' : 'Popular Pick'}
         </span>
-        <a href="${detailLink}">
+        <a href="${detailLink}" class="card-media-link">
           <img src="${imgSrc}" alt="${p.title}" class="card-img" loading="lazy" onerror="this.src='${p.officialImageUrl}'">
         </a>
       </div>
@@ -754,8 +812,8 @@ footer.ergo-footer {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PureAir SG — Best Smart Beauty & Personal Care Devices for Singapore (2026)</title>
-  <meta name="description" content="Singapore's premier smart beauty & personal care tech authority. Independent reviews of pain-free sapphire cooling IPL handsets, red light therapy LED masks, and ionic hair stylers.">
+  <title>PureAir SG - Best Smart Dehumidifiers, HEPA Air Purifiers & Mold Defense Singapore (2026)</title>
+  <meta name="description" content="Singapore's premier clean air and tropical humidity defense authority. Independent reviews of compressor dehumidifiers, medical-grade H13 HEPA air purifiers, wardrobe moisture absorbers, and laser air quality monitors.">
   <link rel="stylesheet" href="./assets/styles.css">
   <script type="application/ld+json">
   {
@@ -763,7 +821,7 @@ footer.ergo-footer {
     "@type": "WebSite",
     "name": "PureAir SG",
     "url": "https://pureair-sg.netlify.app",
-    "description": "Singapore's Premier Smart Beauty & Personal Care Tech Authority",
+    "description": "Singapore's Premier Clean Air & Tropical Moisture Defense Authority",
     "inLanguage": "en-SG"
   }
   </script>
@@ -823,10 +881,10 @@ footer.ergo-footer {
       <div class="container">
         <span class="eyebrow-tag">Editorial Insights</span>
         <h2 style="font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; color: var(--ergo-text-primary);">
-          Singapore Clinical Skincare & Beauty Tech Guides
+          Singapore Clean Air & Tropical Moisture Defense Guides
         </h2>
         <p style="color: var(--ergo-text-secondary); font-size: 1.05rem; margin-top: 6px;">
-          Dermatologist-backed buying blueprints designed specifically for Singapore tropical humidity, sun exposure, and hair frizz.
+          Engineer-tested moisture extraction blueprints and HEPA air purification guides designed specifically for Singapore HDBs, condos, and tropical humidity.
         </p>
         <div class="guides-grid">
           ${this.getSeoGuidesData(products).map(g => `
@@ -847,7 +905,7 @@ footer.ergo-footer {
   <footer class="ergo-footer">
     <div class="container">
       <div class="legal-notice">
-        <strong>Affiliate & Fulfillment Notice:</strong> PureAir SG is an independent ergonomic research publication. All products featured are available directly on Amazon Singapore (Amazon.sg) with fast local Prime delivery and return coverage. As an Amazon Associate, PureAir SG earns from qualifying purchases.
+        <strong>Affiliate & Fulfillment Notice:</strong> PureAir SG is an independent clean air and tropical climate research publication. All products featured are available directly on Amazon Singapore (Amazon.sg) with fast local Prime delivery and return coverage. As an Amazon Associate, PureAir SG earns from qualifying purchases.
       </div>
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
         <div>Copyright &copy; ${new Date().getFullYear()} PureAir SG. All rights reserved.</div>
@@ -916,7 +974,7 @@ footer.ergo-footer {
         </p>
 
         <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 14px; color: var(--ergo-text-primary);">
-          Key Ergonomic Features
+          Key Clean Air & Climate Features
         </h3>
         <ul style="list-style: none; margin-bottom: 30px;">
           ${product.features.map(f => `
@@ -1035,54 +1093,53 @@ footer.ergo-footer {
 </html>`;
   }
 
-  getSeoGuidesData(products) {
+    getSeoGuidesData(products) {
     return [
       {
-        slug: 'best-painless-ipl-hair-removal-handsets-singapore',
-        seoTitle: 'Best Painless Sapphire Ice-Cooling IPL Laser Hair Removal Handsets in Singapore (2026)',
-        summary: 'Why spending S$3,000 on salon Brazilian and underarm packages is obsolete. Comparing true 37°F sapphire cooling handsets with salon-grade 25J output for safe at-home hair reduction in Singapore.',
-        heroProduct: products.find(p => p.asin === 'B0GVSBV7V9') || products[0],
+        slug: 'compressor-vs-desiccant-dehumidifier-singapore-guide',
+        seoTitle: 'Compressor vs Desiccant Dehumidifiers: Which is Best for Singapore HDB Flats? (2026)',
+        summary: 'Singapore sits at 80% to 90% ambient relative humidity year-round. Discover why rotary compressor units outperform peltier and desiccant models for tropical mold eradication, energy consumption, and laundry drying.',
+        heroProduct: products.find(p => p.asin === 'B0GSX4BP21') || products[0],
         content: `
-          <p>In Singapore, recurring salon IPL and laser packages at commercial aesthetic chains easily cost between S$1,800 and S$3,500 annually. Between high-pressure sales consultants and rigid appointment slots, at-home Sapphire Cooling IPL technology has completely transformed personal grooming.</p>
-          <p>Traditional home epilators produce painful heat snaps that can sting and trigger hyperpigmentation on Asian skin tones in warm tropical conditions. The latest generation of handsets integrates continuous 37°F (3°C) sapphire contact plates that chill the skin instantly upon contact, allowing high 25J salon energy to penetrate hair follicles painlessly.</p>
-          <h3>What to Look for in an At-Home IPL Handset</h3>
+          <p>Singapore's ambient relative humidity fluctuates between 75% and 95% across the year. In sealed HDB bedrooms and modern condominiums with concrete walls, this excessive moisture triggers rapid black mold (Aspergillus and Cladosporium) growth on walls, leather bags, and bedframes within weeks.</p>
+          <p>While inexpensive semiconductor Peltier units struggle to collect even 300ml of water a day, rotary compressor dehumidifiers extract between 10 and 16 liters every 24 hours. They run on eco-friendly R290 refrigerant, consuming less than 220 watts while rapidly dropping indoor humidity from 85% down to a healthy 50% mold-inhibition threshold.</p>
+          <h3>What to Look for in a Singapore Dehumidifier</h3>
           <ul>
-            <li><strong>Active Sapphire Freeze-Cooling:</strong> Sub-zero contact plate prevents epidermal burns and eliminates the need for messy numbing gels.</li>
-            <li><strong>High Energy Output (20J to 25J):</strong> Ensures permanent follicle dormancy rather than temporary hair thinning.</li>
-            <li><strong>Auto-Glide Continuous Mode:</strong> Flashes every 0.8 seconds to treat full legs, underarms, and bikini zones in under 10 minutes.</li>
-            <li><strong>Unlimited Lifetime Flashes:</strong> Handsets with 900,000+ pulses last 15+ years for whole-body maintenance.</li>
+            <li><strong>Continuous Drainage Port:</strong> Allows direct hose connection into toilet drains or floor traps, bypassing 2L-4L water tank emptying.</li>
+            <li><strong>Digital Humidistat Auto-Off:</strong> Automatically shuts off the compressor once 50% relative humidity is reached, slashing electricity bills.</li>
+            <li><strong>Active Carbon Pre-Filters:</strong> Traps musty indoor odors and pet dander while dehumidifying damp laundry indoors on rainy monsoon days.</li>
           </ul>
         `
       },
       {
-        slug: 'red-light-therapy-led-face-mask-singapore-guide',
-        seoTitle: 'Red Light Therapy LED Face Masks: Dermatologist Review for Singapore Humid Climate',
-        summary: 'How 630nm red collagen boosters and 470nm blue acne-fighting wavelengths treat enlarged pores, humidity breakouts, and fine lines in Singapore without greasy clinic topicals.',
-        heroProduct: products.find(p => p.asin === 'B0BBB76WYQ') || products[1],
+        slug: 'singapore-haze-pm25-hepa-air-purifier-buying-guide',
+        seoTitle: 'Singapore Haze & PM2.5 Defense: Medical-Grade H13 True HEPA Purifier Buying Guide (2026)',
+        summary: 'How to safeguard your family from seasonal transboundary haze, road pollution, and volatile indoor VOCs. What CADR ratings and true HEPA filtration you actually need for Singapore master bedrooms.',
+        heroProduct: products.find(p => p.asin === 'B08L73QL1V') || products[1],
         content: `
-          <p>Singapore's year-round 85%+ relative humidity and constant high UV index create a unique skincare challenge: thick pore-clogging sebum and sweat combined with accelerated photo-aging from intense sunlight.</p>
-          <p>Medical-grade LED masks utilize precise narrow-band wavelengths that penetrate deep into the dermis without generating thermal heat or surface friction. Clinical 630nm red light accelerates fibroblast collagen production, while 470nm blue light oxidizes Propionibacterium acnes bacteria trapped in tropical sweat glands.</p>
-          <h3>Key Features for Tropical Skincare LED Tech</h3>
+          <p>During the regional dry season, transboundary smoke haze can push Singapore's 24-hour PSI and PM2.5 concentrations into the unhealthy bracket without warning. Microscopic PM2.5 particles bypass the nasal lining and enter the bloodstream, aggravating asthma, sinus inflammation, and infant allergies.</p>
+          <p>True medical-grade H13 HEPA filters capture 99.97% of airborne particulate matter down to 0.3 microns, including fine combustion smoke, dust mite allergens, and pollen spores. When paired with high Clean Air Delivery Rate (CADR) fans, they circulate and purify the entire volume of a typical 4-room HDB living area in under 15 minutes.</p>
+          <h3>Key Features for Singapore HEPA Air Purifiers</h3>
           <ul>
-            <li><strong>Dual Collagen (Red) & Anti-Bacterial (Blue) Spectra:</strong> Clears humidity maskne while firming the jawline.</li>
-            <li><strong>Medical-Grade Soft Silicone Fit:</strong> Flexible silicone contours directly against the skin without leaving red pressure indentations.</li>
-            <li><strong>Neck & Decollete Coverage:</strong> Protects the delicate neck area, which shows accelerated photo-aging in Singapore's harsh tropical sun.</li>
+            <li><strong>True H13 Certification:</strong> Avoid generic "HEPA-type" filters that leak particles larger than 2.5 microns.</li>
+            <li><strong>Laser PM2.5 Air Quality Sensor:</strong> Real-time color-coded LED display and automated fan ramp-up when cooking fumes or haze spike.</li>
+            <li><strong>Whisper-Quiet Sleep Mode (Sub-24dB):</strong> Essential for light sleepers in compact Singapore master bedrooms with air conditioning.</li>
           </ul>
         `
       },
       {
-        slug: 'high-speed-ionic-hair-dryers-singapore-humidity-frizz',
-        seoTitle: 'High-Speed Ionic Hair Dryers vs Singapore 85% Humidity: Anti-Frizz Buyer Blueprint',
-        summary: 'Stop heat-damaging your hair in Singapore\'s tropical dampness. How 110,000 RPM brushless motors and 200M negative ions dry thick Asian hair in 4 minutes flat with zero frizz.',
-        heroProduct: products.find(p => p.asin === 'B0GXYZGQ93') || products[6],
+        slug: 'wardrobe-luxury-bag-mold-prevention-singapore',
+        seoTitle: 'Preventing Mold on Leather Handbags & Wardrobes in Singapore: Permanent Solutions',
+        summary: 'Why disposable silica gel packs and Thirsty Hippo tubs fail in Singapore humidity within 3 weeks. Comparing renewable mini dehumidifiers, dry-box hygrometers, and airtight sealing for luxury leather care.',
+        heroProduct: products.find(p => p.asin === 'B0FVFCB9F6') || products[2],
         content: `
-          <p>Stepping out of an air-conditioned room into Singapore\'s 32°C tropical heat causes raised hair cuticles to absorb ambient moisture instantly, turning morning blowouts into unruly frizz and flyaways within 15 minutes.</p>
-          <p>Conventional 2,000W hair dryers rely on extreme baking heat (110°C+) that strips natural moisture, leaving cuticles porous and vulnerable. Modern high-speed dryers utilize 110,000 RPM brushless digital motors that propel high-velocity room-temperature air (up to 70 m/s) with 200 million negative ions per cubic centimeter.</p>
-          <h3>Why High-Speed Ionic Dryers Win in Singapore</h3>
+          <p>Every homeowner in Singapore has experienced the heartbreak of opening a built-in wardrobe to discover white powdery mildew fuzz coating leather Chanel, Herm�s, or Louis Vuitton bags and designer dress shoes.</p>
+          <p>Disposable calcium chloride moisture absorbers quickly fill with caustic alkaline water, posing leakage risks that permanently stain exotic leathers. Compact rechargeable Peltier and renewable silica cartridges offer a non-toxic, spill-proof alternative that keeps wardrobe microclimates dry for years.</p>
+          <h3>Best Practices for Tropical Luxury Wardrobe Defense</h3>
           <ul>
-            <li><strong>4-Minute Fast Dry:</strong> High air velocity evaporates water mechanically without frying hair protein.</li>
-            <li><strong>200 Million Negative Ions:</strong> Neutralizes static electricity and seals cuticles tightly against tropical humidity absorption.</li>
-            <li><strong>Smart NTC Heat Regulation:</strong> Cycles air temperature 100 times per second to prevent scalp sweat and hair breakage.</li>
+            <li><strong>Renewable Moisture Absorbers:</strong> Cordless heating plug desorbs moisture overnight, allowing 300+ reuse cycles.</li>
+            <li><strong>Digital Wardrobe Hygrometers:</strong> Track interior wardrobe humidity to ensure it stays between 45% and 55% RH.</li>
+            <li><strong>Periodic Airflow:</strong> Never seal damp items in airtight plastic bags; allow breathable dust covers and active moisture extraction.</li>
           </ul>
         `
       }
@@ -1114,7 +1171,7 @@ footer.ergo-footer {
   </header>
 
   <main class="container" style="max-width: 860px; padding: 50px 24px;">
-    <span class="eyebrow-tag">Singapore HDB Ergonomics Blueprint</span>
+    <span class="eyebrow-tag">Singapore Clean Air & Climate Blueprint</span>
     <h1 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em; margin: 10px 0 20px; color: var(--ergo-text-primary);">
       ${guide.seoTitle}
     </h1>
