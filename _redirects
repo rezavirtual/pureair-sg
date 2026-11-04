@@ -1,0 +1,2 @@
+# Netlify Static Multi-Page Redirects
+/products    /#productGrid   301
