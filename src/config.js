@@ -62,7 +62,7 @@ export const CONFIG = {
   site: {
     name: 'PureAir SG',
     tagline: 'Singapore Smart Dehumidifiers, HEPA Air Purifiers & Tropical Mold Defense',
-    url: 'https://pureair-sg.netlify.app',
+    url: 'https://air.auraequip.com',
     locale: 'en-SG',
     contactEmail: 'rezavirtual@gmail.com',
     defaultTag: 'pettechsg-22'

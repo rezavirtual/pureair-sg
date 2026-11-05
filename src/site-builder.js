@@ -117,7 +117,7 @@ export class SiteBuilder {
 [[headers]]
   for = "/assets/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[redirects]]
   from = "/products"
@@ -409,13 +409,13 @@ header.ergo-header {
 }
 
 .card-img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  margin: auto;
-  display: block;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  margin: auto !important;
+  display: block !important;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -711,17 +711,21 @@ footer.ergo-footer {
 }
 
 @media (max-width: 860px) {
+  .nav-menu { display: none !important; }
+  .sg-badge { display: none !important; }
   .product-detail-layout { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.2rem; }
   .product-grid { grid-template-columns: 1fr; }
   .card-media-wrapper {
-    height: 240px;
+    height: 260px !important;
   }
   .card-media-link {
     padding: 38px 14px 12px 14px;
   }
   .card-img {
-    max-height: 185px;
+    max-height: 185px !important;
+    max-width: 90% !important;
+    object-fit: contain !important;
   }
   .detail-gallery {
     padding: 20px 14px;
@@ -748,13 +752,15 @@ footer.ergo-footer {
 
 @media (max-width: 480px) {
   .card-media-wrapper {
-    height: 220px;
+    height: 260px !important;
   }
   .card-media-link {
     padding: 36px 10px 10px 10px;
   }
   .card-img {
-    max-height: 170px;
+    max-height: 185px !important;
+    max-width: 90% !important;
+    object-fit: contain !important;
   }
   .detail-gallery {
     min-height: 230px;
@@ -774,13 +780,13 @@ footer.ergo-footer {
 
     return `
     <div class="ergo-card" data-category="${p.categorySlug}">
-      <div class="card-media-wrapper">
+      <div class="card-media-wrapper" style="position: relative; height: 260px; background: #ffffff; overflow: hidden; display: flex; align-items: center; justify-content: center; box-sizing: border-box;">
         <span class="card-brand-badge">${p.brand}</span>
         <span class="card-tier-pill ${p.isHighTicket ? 'tier-anchor' : 'tier-trigger'}">
           ${p.isHighTicket ? 'Premium Pick' : 'Popular Pick'}
         </span>
-        <a href="${detailLink}" class="card-media-link">
-          <img src="${imgSrc}" alt="${p.title}" class="card-img" loading="lazy" onerror="this.src='${p.officialImageUrl}'">
+        <a href="${detailLink}" class="card-media-link" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 36px 14px 14px 14px; box-sizing: border-box; text-decoration: none;">
+          <img src="${imgSrc}" alt="${p.title}" class="card-img" style="max-width: 90%; max-height: 185px; width: auto; height: auto; object-fit: contain; margin: auto; display: block;" loading="lazy" onerror="this.src='${p.officialImageUrl}'">
         </a>
       </div>
       <div class="card-body">
@@ -814,13 +820,13 @@ footer.ergo-footer {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PureAir SG - Best Smart Dehumidifiers, HEPA Air Purifiers & Mold Defense Singapore (2026)</title>
   <meta name="description" content="Singapore's premier clean air and tropical humidity defense authority. Independent reviews of compressor dehumidifiers, medical-grade H13 HEPA air purifiers, wardrobe moisture absorbers, and laser air quality monitors.">
-  <link rel="stylesheet" href="./assets/styles.css">
+  <link rel="stylesheet" href="./assets/styles.css?v=20261104_v4">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "PureAir SG",
-    "url": "https://pureair-sg.netlify.app",
+    "url": "https://air.auraequip.com",
     "description": "Singapore's Premier Clean Air & Tropical Moisture Defense Authority",
     "inLanguage": "en-SG"
   }
@@ -942,7 +948,7 @@ footer.ergo-footer {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${product.title} — Singapore Price & Ergonomic Review (2026)</title>
   <meta name="description" content="${product.rawDescription}">
-  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="../assets/styles.css?v=20261104_v4">
 </head>
 <body>
   <header class="ergo-header">
@@ -1060,7 +1066,7 @@ footer.ergo-footer {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${catName} Singapore — Best Ergonomics & Prices (2026)</title>
-  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="../assets/styles.css?v=20261104_v4">
 </head>
 <body>
   <header class="ergo-header">
@@ -1154,7 +1160,7 @@ footer.ergo-footer {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${guide.seoTitle} — PureAir SG</title>
   <meta name="description" content="${guide.summary}">
-  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="../assets/styles.css?v=20261104_v4">
 </head>
 <body>
   <header class="ergo-header">

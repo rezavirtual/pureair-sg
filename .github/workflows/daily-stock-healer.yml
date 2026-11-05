@@ -1,0 +1,38 @@
+name: Autonomous Daily Stock Healer & Link Optimization
+
+on:
+  schedule:
+    # Runs automatically every day at 00:30 UTC (08:30 AM Singapore Time)
+    - cron: '30 0 * * *'
+  workflow_dispatch: # Allows 1-click manual trigger anytime
+
+permissions:
+  contents: write
+
+jobs:
+  stock-healing:
+    name: Audit Amazon.sg Inventory & Self-Heal Dead Links
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 📥 Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: ⚡ Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 🛡️ Run Daily Stock Healer & Smart Fallback Engine
+        run: |
+          node scripts/daily-stock-healer.js
+          node scripts/rebuild-site.js
+
+      - name: 🚀 Commit & Push Self-Healed Links
+        run: |
+          git config user.name "Antigravity Autonomous Stock Healer"
+          git config user.email "bot@auraequip.com"
+          git add data/ dist/
+          git diff --staged --quiet || git commit -m "chore(stock-healer): auto-heal out-of-stock ASINs with active Amazon.sg fallbacks [skip ci]"
+          git push origin main || true
