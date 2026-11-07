@@ -71,11 +71,11 @@
       "Essential oils must be purchased separately"
     ],
     "rawDescription": "AromaRoom Smart Air Purifier combines medical-grade H13 HEPA filtration with an integrated live PM2.5 display and aroma diffuser for Singapore homes.",
-    "affiliateUrl": "https://www.amazon.sg/dp/B0GL7NYHP3/?tag=pettechsg-22&linkCode=ogi&th=1&psc=1",
+    "affiliateUrl": "https://www.amazon.sg/s?k=AromaRoom%20HEPA%20Air%20Purifiers&tag=pettechsg-22&linkCode=ogi",
     "commissionPerSaleSgd": 11.62,
     "effectiveCv": 0.055,
     "expectedYieldPer100Clicks": 63.91,
-    "inStock": true
+    "inStock": false
   },
   {
     "asin": "B001GKLYDK",
@@ -305,11 +305,11 @@
       "Filter should be rinsed under tap once every month"
     ],
     "rawDescription": "PureBreeze 2-in-1 Dehumidifier & Air Purifier Combo simultaneously extracts tropical moisture and cleanses air with negative ions for optimal Singapore living.",
-    "affiliateUrl": "https://www.amazon.sg/s?k=PureBreeze%20Compressor%20Dehumidifiers&tag=pettechsg-22&linkCode=ogi",
+    "affiliateUrl": "https://www.amazon.sg/dp/B09W9TPJGZ/?tag=pettechsg-22&linkCode=ogi&th=1&psc=1",
     "commissionPerSaleSgd": 16.5,
     "effectiveCv": 0.055,
     "expectedYieldPer100Clicks": 90.75,
-    "inStock": false
+    "inStock": true
   },
   {
     "asin": "B0FSJFFW67",
