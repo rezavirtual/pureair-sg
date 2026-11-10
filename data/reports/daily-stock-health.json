@@ -1,7 +1,7 @@
 {
-  "lastAudit": "2026-11-09T01:39:04.236Z",
+  "lastAudit": "2026-11-10T01:31:34.353Z",
   "total": 14,
-  "inStock": 14,
-  "outOfStock": 0,
-  "healedWithSmartFallback": 0
+  "inStock": 5,
+  "outOfStock": 9,
+  "healedWithSmartFallback": 9
 }
