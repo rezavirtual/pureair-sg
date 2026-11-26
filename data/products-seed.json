@@ -227,11 +227,11 @@
       "10.5kg weight makes castor wheels necessary for room-to-room moving"
     ],
     "rawDescription": "Devola 12L Smart Compressor Dehumidifier eliminates tropical moisture, prevents closet mold, and dries damp laundry indoors across Singapore HDBs and condos.",
-    "affiliateUrl": "https://www.amazon.sg/s?k=Devola%20Compressor%20Dehumidifiers&tag=pettechsg-22&linkCode=ogi",
+    "affiliateUrl": "https://www.amazon.sg/dp/B0GSX4BP21/?tag=pettechsg-22&linkCode=ogi&th=1&psc=1",
     "commissionPerSaleSgd": 23.57,
     "effectiveCv": 0.035,
     "expectedYieldPer100Clicks": 82.5,
-    "inStock": false
+    "inStock": true
   },
   {
     "asin": "B0HCTFM5TG",
@@ -305,11 +305,11 @@
       "Filter should be rinsed under tap once every month"
     ],
     "rawDescription": "PureBreeze 2-in-1 Dehumidifier & Air Purifier Combo simultaneously extracts tropical moisture and cleanses air with negative ions for optimal Singapore living.",
-    "affiliateUrl": "https://www.amazon.sg/s?k=PureBreeze%20Compressor%20Dehumidifiers&tag=pettechsg-22&linkCode=ogi",
+    "affiliateUrl": "https://www.amazon.sg/dp/B09W9TPJGZ/?tag=pettechsg-22&linkCode=ogi&th=1&psc=1",
     "commissionPerSaleSgd": 16.5,
     "effectiveCv": 0.055,
     "expectedYieldPer100Clicks": 90.75,
-    "inStock": false
+    "inStock": true
   },
   {
     "asin": "B0FSJFFW67",
@@ -539,10 +539,10 @@
       "Professional sensor requires 3-minute initial warm-up calibration when powered on"
     ],
     "rawDescription": "Temtop LKC-1000S+ Professional Air Quality Detector tests formaldehyde, PM2.5 haze, and VOC levels to verify safe indoor air after Singapore home renovations.",
-    "affiliateUrl": "https://www.amazon.sg/dp/B08DNJ8L55/?tag=pettechsg-22&linkCode=ogi&th=1&psc=1",
+    "affiliateUrl": "https://www.amazon.sg/s?k=Temtop%20Air%20Monitors%20%26%20Sensors&tag=pettechsg-22&linkCode=ogi",
     "commissionPerSaleSgd": 22.51,
     "effectiveCv": 0.035,
     "expectedYieldPer100Clicks": 78.79,
-    "inStock": true
+    "inStock": false
   }
 ]
